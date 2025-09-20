@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="末世题材小说在线阅读，支持多设备，章节目录清晰" />
-  <meta name="keywords" content="末世小说, 在线阅读, vel小说" />
-  <meta name="author" content="Your Name" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="vel 小说阅读" />
-  <meta property="og:description" content="在线阅读末世题材小说，支持章节导航和多格式下载" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-repo.github.io/vel-txt-project" />
-  <meta property="og:image" content="https://your-repo.github.io/vel-txt-project/og-image.jpg" />
-  <title>vel 小说阅读</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="alternate" type="application/rss+xml" title="章节更新" href="/feed.xml" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="《末世求生录》在线阅读，末世题材小说，支持多设备，章节目录清晰，EPUB/PDF 下载">
+  <meta name="keywords" content="末世求生录, 末世小说, 在线阅读, 小说下载">
+  <meta name="author" content="梧桐">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <meta property="og:title" content="末世求生录 - 在线阅读">
+  <meta property="og:description" content="在线阅读末世题材小说《末世求生录》，支持章节导航、夜间模式和多格式下载">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wt667.github.io/vel-txt-project">
+  <meta property="og:image" content="https://wt667.github.io/vel-txt-project/assets/og-image.jpg">
+  <title>末世求生录 - 在线阅读</title>
+  <link rel="stylesheet" href="style.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="章节更新" href="/feed.xml">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "末世求生录",
+      "author": {
+        "@type": "Person",
+        "name": "梧桐"
+      },
+      "description": "一部末世题材小说，讲述林浩在病毒爆发后的生存故事",
+      "url": "https://wt667.github.io/vel-txt-project"
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1>vel 小说阅读</h1>
+      <h1>末世求生录</h1>
       <div class="controls">
-        <button id="themeToggle" aria-label="切换夜间模式">🌙</button>
-        <input type="search" id="chapterSearch" placeholder="搜索章节..." aria-label="搜索章节" />
+        <label for="chapterSearch" class="visually-hidden">搜索章节</label>
+        <input type="search" id="chapterSearch" placeholder="搜索章节..." aria-label="搜索章节">
+        <button id="themeToggle" aria-label="切换夜间模式" aria-pressed="false">🌙</button>
         <button id="fontSizeAdjust" aria-label="调整字体大小">A</button>
       </div>
     </header>
-    <aside class="sidebar" role="navigation" aria-label="章节目录">
+    <aside class="sidebar" aria-label="章节目录">
       <h2>章节目录</h2>
-      <ul id="chapterList" role="list"></ul>
+      <ul id="chapterList"></ul>
     </aside>
-    <main class="content" role="main">
+    <main class="content" aria-label="小说内容">
       <h2 id="chapterTitle" aria-live="polite">点击左侧章节开始阅读</h2>
-      <article id="chapterContent" role="article">加载中...</article>
+      <article id="chapterContent" aria-live="assertive">
+        <p>欢迎体验《末世求生录》，请选择章节开始阅读！</p>
+      </article>
+      <div class="navigation">
+        <button id="prevChapter" disabled aria-label="上一章">上一章</button>
+        <button id="nextChapter" disabled aria-label="下一章">下一章</button>
+      </div>
       <div class="loading-spinner" aria-hidden="true" hidden>Loading...</div>
     </main>
     <footer>
-      <p>© 2025 vel 小说 | <a href="/about">关于</a> | <a href="/rss">RSS 订阅</a></p>
+      <p>© 2025 梧桐 | <a href="/about">关于</a> | <a href="/rss">RSS 订阅</a> | <a href="/download">下载 EPUB/PDF</a></p>
     </footer>
   </div>
   <script src="script.js" defer></script>
+  <script>
+    // 保存用户偏好（夜间模式、字体大小）
+    document.addEventListener('DOMContentLoaded', () => {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.body.classList.toggle('dark-mode', theme === 'dark');
+      document.getElementById('themeToggle').setAttribute('aria-pressed', theme === 'dark');
+      const fontSize = localStorage.getItem('fontSize') || 'medium';
+      document.getElementById('chapterContent').className = `font-${fontSize}`;
+    });
+  </script>
 </body>
 </html>
