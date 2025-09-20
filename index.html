@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="末世题材小说在线阅读，支持多设备，章节目录清晰" />
+  <meta name="keywords" content="末世小说, 在线阅读, vel小说" />
+  <meta name="author" content="Your Name" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="vel 小说阅读" />
+  <meta property="og:description" content="在线阅读末世题材小说，支持章节导航和多格式下载" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-repo.github.io/vel-txt-project" />
+  <meta property="og:image" content="https://your-repo.github.io/vel-txt-project/og-image.jpg" />
   <title>vel 小说阅读</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="alternate" type="application/rss+xml" title="章节更新" href="/feed.xml" />
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar">
-      <h1>章节目录</h1>
-      <ul id="chapterList"></ul>
+    <header class="header">
+      <h1>vel 小说阅读</h1>
+      <div class="controls">
+        <button id="themeToggle" aria-label="切换夜间模式">🌙</button>
+        <input type="search" id="chapterSearch" placeholder="搜索章节..." aria-label="搜索章节" />
+        <button id="fontSizeAdjust" aria-label="调整字体大小">A</button>
+      </div>
+    </header>
+    <aside class="sidebar" role="navigation" aria-label="章节目录">
+      <h2>章节目录</h2>
+      <ul id="chapterList" role="list"></ul>
     </aside>
-    <main class="content">
-      <div id="chapterTitle">点击左侧章节开始阅读</div>
-      <article id="chapterContent">加载中...</article>
+    <main class="content" role="main">
+      <h2 id="chapterTitle" aria-live="polite">点击左侧章节开始阅读</h2>
+      <article id="chapterContent" role="article">加载中...</article>
+      <div class="loading-spinner" aria-hidden="true" hidden>Loading...</div>
     </main>
+    <footer>
+      <p>© 2025 vel 小说 | <a href="/about">关于</a> | <a href="/rss">RSS 订阅</a></p>
+    </footer>
   </div>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
